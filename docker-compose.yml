@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+
+  # Banco de dados MySQL
+  db:
+    image: mysql:8.0
+    container_name: woodflow-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: woodflow_db
+      MYSQL_USER: woodflow
+      MYSQL_PASSWORD: woodflow123
+    ports:
+      - "3306:3306"
+    volumes:
+      # Inicializa o banco com as tabelas do projeto
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+      # Persiste os dados entre reinicializações
+      - woodflow_db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uwoodflow", "-pwoodflow123"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # API Node.js + Express
+  api:
+    build:
+      context: ./backend
+    container_name: woodflow-api
+    environment:
+      DB_HOST: db
+      DB_USER: woodflow
+      DB_PASSWORD: woodflow123
+      DB_NAME: woodflow_db
+      JWT_SECRET: woodflow_jwt_secret_2026
+      PORT: 3001
+    ports:
+      - "3001:3001"
+    # A API depende do banco estar saudável antes de subir
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Front-end React servido pelo Nginx
+  web:
+    build:
+      context: ./frontend
+    container_name: woodflow-web
+    ports:
+      # Porta 3000 da máquina aponta para a porta 80 do Nginx no container
+      - "3000:80"
+    depends_on:
+      - api
+
+volumes:
+  woodflow_db_data:
