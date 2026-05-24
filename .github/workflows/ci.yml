@@ -19,24 +19,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout do código
       - name: Checkout do repositório
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # necessário para o SonarCloud analisar o histórico completo
+          fetch-depth: 0
 
-      # 2. Configurar Node.js
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      # 3. Instalar dependências do Backend
       - name: Instalar dependências do Backend
         working-directory: ./backend
         run: npm install
 
-      # 4. Build do Frontend
       - name: Instalar dependências do Frontend
         working-directory: ./frontend
         run: npm install
@@ -45,18 +41,16 @@ jobs:
         working-directory: ./frontend
         run: npm run build
 
-      # 5. Análise SonarCloud
       - name: Análise SonarCloud
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
             -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
 
-      # 6. Build das imagens Docker
       - name: Build das imagens Docker
         run: docker compose build
 
