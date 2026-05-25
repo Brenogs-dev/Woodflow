@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
 :root {
   --cream: #F5F0E8;
   --warm-white: #FDFAF4;
@@ -67,7 +69,7 @@ body {
 
 .sidebar-logo span {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.9);
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: block;
@@ -84,7 +86,7 @@ body {
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
-  color: rgba(255,255,255,0.9);
+  color: #ffffff;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -114,13 +116,13 @@ body {
 
 .user-info {
   font-size: 0.8rem;
-  color: rgba(255,255,255,0.5);
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
 .user-name {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.85);
+  color: #ffffff;
   font-weight: 500;
 }
 
@@ -129,7 +131,7 @@ body {
   padding: 8px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.95);
+  color: #ffffff;
   border-radius: var(--radius);
   font-family: var(--font-body);
   font-size: 0.85rem;
