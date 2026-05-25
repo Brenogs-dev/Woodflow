@@ -100,7 +100,7 @@ body {
 
 .nav-item:hover, .nav-item.active {
   color: white;
-  background: rgba(255,255,255,0.08);
+  background: #4A3828;
 }
 
 .nav-item.active {
@@ -129,7 +129,7 @@ body {
 .btn-logout {
   width: 100%;
   padding: 8px;
-  background: rgba(255,255,255,0.08);
+  background: #4A3828;
   border: 1px solid rgba(255,255,255,0.15);
   color: #ffffff;
   border-radius: var(--radius);
@@ -141,7 +141,7 @@ body {
 }
 
 .btn-logout:hover {
-  background: rgba(255,255,255,0.15);
+  background: #574234;
   color: white;
 }
 
