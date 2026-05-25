@@ -35,7 +35,7 @@ export default function Clientes() {
   };
 
   const remover = async (id) => {
-    if (!window.confirm('Remover este cliente?')) return;
+    if (!globalThis.confirm('Remover este cliente?')) return;
     try { await api.delete(`/clientes/${id}`); carregar(); }
     catch { alert('Não é possível remover cliente com projetos associados.'); }
   };
@@ -92,30 +92,30 @@ export default function Clientes() {
       )}
 
       {modal && (
-        <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModal(false)}>
+        <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModal(false)} role="dialog" aria-modal="true" aria-labelledby="modal-title-cliente">
           <div className="modal">
             <div className="modal-header">
-              <h2 className="modal-title">{editando ? 'Editar Cliente' : 'Novo Cliente'}</h2>
-              <button className="modal-close" onClick={() => setModal(false)}>×</button>
+              <h2 className="modal-title" id="modal-title-cliente">{editando ? 'Editar Cliente' : 'Novo Cliente'}</h2>
+              <button className="modal-close" onClick={() => setModal(false)} aria-label="Fechar modal">×</button>
             </div>
             {erro && <div className="alert alert-error">{erro}</div>}
             <div className="form-group">
-              <label>Nome *</label>
-              <input value={form.nome} onChange={e => setForm({...form, nome: e.target.value})} placeholder="Nome completo" />
+              <label htmlFor="cliente-nome">Nome *</label>
+              <input id="cliente-nome" value={form.nome} onChange={e => setForm({...form, nome: e.target.value})} placeholder="Nome completo" />
             </div>
             <div className="form-grid">
               <div className="form-group">
-                <label>Telefone</label>
-                <input value={form.telefone} onChange={e => setForm({...form, telefone: e.target.value})} placeholder="(83) 99999-9999" />
+                <label htmlFor="cliente-telefone">Telefone</label>
+                <input id="cliente-telefone" value={form.telefone} onChange={e => setForm({...form, telefone: e.target.value})} placeholder="(83) 99999-9999" />
               </div>
               <div className="form-group">
-                <label>E-mail</label>
-                <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} placeholder="cliente@email.com" />
+                <label htmlFor="cliente-email">E-mail</label>
+                <input id="cliente-email" type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} placeholder="cliente@email.com" />
               </div>
             </div>
             <div className="form-group">
-              <label>Endereço</label>
-              <textarea value={form.endereco} onChange={e => setForm({...form, endereco: e.target.value})} placeholder="Rua, número, bairro..." rows={2} />
+              <label htmlFor="cliente-endereco">Endereço</label>
+              <textarea id="cliente-endereco" value={form.endereco} onChange={e => setForm({...form, endereco: e.target.value})} placeholder="Rua, número, bairro..." rows={2} />
             </div>
             <div className="modal-actions">
               <button className="btn btn-secondary" onClick={() => setModal(false)}>Cancelar</button>

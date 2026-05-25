@@ -50,7 +50,7 @@ export default function Projetos() {
   };
 
   const remover = async (id) => {
-    if (!window.confirm('Remover este projeto?')) return;
+    if (!globalThis.confirm('Remover este projeto?')) return;
     await api.delete(`/projetos/${id}`);
     carregar();
   };
@@ -114,42 +114,42 @@ export default function Projetos() {
       )}
 
       {modal && (
-        <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModal(false)}>
+        <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModal(false)} role="dialog" aria-modal="true" aria-labelledby="modal-title-projeto">
           <div className="modal">
             <div className="modal-header">
-              <h2 className="modal-title">{editando ? 'Editar Projeto' : 'Novo Projeto'}</h2>
-              <button className="modal-close" onClick={() => setModal(false)}>×</button>
+              <h2 className="modal-title" id="modal-title-projeto">{editando ? 'Editar Projeto' : 'Novo Projeto'}</h2>
+              <button className="modal-close" onClick={() => setModal(false)} aria-label="Fechar modal">×</button>
             </div>
             {erro && <div className="alert alert-error">{erro}</div>}
             <div className="form-group">
-              <label>Nome do Projeto</label>
-              <input value={form.nome} onChange={e => setForm({...form, nome: e.target.value})} placeholder="Ex: Armário planejado sala" />
+              <label htmlFor="projeto-nome">Nome do Projeto</label>
+              <input id="projeto-nome" value={form.nome} onChange={e => setForm({...form, nome: e.target.value})} placeholder="Ex: Armário planejado sala" />
             </div>
             <div className="form-group">
-              <label>Descrição</label>
-              <textarea value={form.descricao} onChange={e => setForm({...form, descricao: e.target.value})} placeholder="Detalhes do projeto..." />
+              <label htmlFor="projeto-descricao">Descrição</label>
+              <textarea id="projeto-descricao" value={form.descricao} onChange={e => setForm({...form, descricao: e.target.value})} placeholder="Detalhes do projeto..." />
             </div>
             <div className="form-grid">
               <div className="form-group">
-                <label>Cliente</label>
-                <select value={form.cliente_id} onChange={e => setForm({...form, cliente_id: e.target.value})}>
+                <label htmlFor="projeto-cliente">Cliente</label>
+                <select id="projeto-cliente" value={form.cliente_id} onChange={e => setForm({...form, cliente_id: e.target.value})}>
                   <option value="">Selecione...</option>
                   {clientes.map(c => <option key={c.id} value={c.id}>{c.nome}</option>)}
                 </select>
               </div>
               <div className="form-group">
-                <label>Status</label>
-                <select value={form.status} onChange={e => setForm({...form, status: e.target.value})}>
+                <label htmlFor="projeto-status">Status</label>
+                <select id="projeto-status" value={form.status} onChange={e => setForm({...form, status: e.target.value})}>
                   {Object.entries(STATUS_LABELS).map(([k,v]) => <option key={k} value={k}>{v}</option>)}
                 </select>
               </div>
               <div className="form-group">
-                <label>Prazo</label>
-                <input type="date" value={form.prazo} onChange={e => setForm({...form, prazo: e.target.value})} />
+                <label htmlFor="projeto-prazo">Prazo</label>
+                <input id="projeto-prazo" type="date" value={form.prazo} onChange={e => setForm({...form, prazo: e.target.value})} />
               </div>
               <div className="form-group">
-                <label>Valor (R$)</label>
-                <input type="number" step="0.01" value={form.valor} onChange={e => setForm({...form, valor: e.target.value})} placeholder="0,00" />
+                <label htmlFor="projeto-valor">Valor (R$)</label>
+                <input id="projeto-valor" type="number" step="0.01" value={form.valor} onChange={e => setForm({...form, valor: e.target.value})} placeholder="0,00" />
               </div>
             </div>
             <div className="modal-actions">

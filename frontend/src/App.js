@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
@@ -11,6 +12,10 @@ import Layout from './components/Layout';
 const Privada = ({ children }) => {
   const { autenticado } = useAuth();
   return autenticado ? children : <Navigate to="/login" replace />;
+};
+
+Privada.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default function App() {

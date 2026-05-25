@@ -16,7 +16,7 @@ api.interceptors.response.use(
     if (err.response?.status === 401) {
       localStorage.removeItem('wf_token');
       localStorage.removeItem('wf_usuario');
-      window.location.href = '/login';
+      globalThis.location.href = '/login';
     }
     return Promise.reject(err);
   }

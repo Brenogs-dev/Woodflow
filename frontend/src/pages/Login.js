@@ -36,12 +36,12 @@ export default function Login() {
         {erro && <div className="alert alert-error">{erro}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>E-mail</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" required />
+            <label htmlFor="login-email">E-mail</label>
+            <input id="login-email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="seu@email.com" required />
           </div>
           <div className="form-group">
-            <label>Senha</label>
-            <input type="password" value={senha} onChange={e => setSenha(e.target.value)} placeholder="••••••••" required />
+            <label htmlFor="login-senha">Senha</label>
+            <input id="login-senha" type="password" value={senha} onChange={e => setSenha(e.target.value)} placeholder="••••••••" required />
           </div>
           <button type="submit" className="login-btn" disabled={loading}>
             {loading ? 'Entrando...' : 'Entrar'}
