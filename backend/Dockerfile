@@ -5,7 +5,7 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci --ignore-scripts --omit=dev
+RUN npm install --ignore-scripts --omit=dev
 
 COPY . .
 
