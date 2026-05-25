@@ -1,22 +1,18 @@
-# Etapa 1: build da aplicação React
 FROM node:18-alpine AS builder
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --ignore-scripts
+RUN npm install --ignore-scripts
 COPY . .
 RUN npm run build
 
-# Etapa 2: servir com Nginx usando usuário não-root
 FROM nginx:alpine
 
-# Criar usuário não-root
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 COPY --from=builder /app/build /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Ajustar permissões
 RUN chown -R appuser:appgroup /usr/share/nginx/html && \
     chown -R appuser:appgroup /var/cache/nginx && \
     chown -R appuser:appgroup /var/log/nginx && \
