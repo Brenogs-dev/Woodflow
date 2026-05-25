@@ -48,8 +48,8 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
-            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.projectKey=Brenogs-dev_Woodflow
+            -Dsonar.organization=brenogsdev
 
       - name: Build das imagens Docker
         run: docker compose build
