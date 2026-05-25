@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import api from '../services/api';
 
 const COLUNAS = [
@@ -39,6 +40,19 @@ const KanbanCard = ({ projeto, hoje, onAtualizarStatus }) => {
       </div>
     </div>
   );
+};
+
+KanbanCard.propTypes = {
+  projeto: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    nome: PropTypes.string.isRequired,
+    cliente_nome: PropTypes.string,
+    prazo: PropTypes.string,
+    valor: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    status: PropTypes.string.isRequired,
+  }).isRequired,
+  hoje: PropTypes.string.isRequired,
+  onAtualizarStatus: PropTypes.func.isRequired,
 };
 
 export default function Kanban() {

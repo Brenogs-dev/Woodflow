@@ -61,11 +61,7 @@ export default function Clientes() {
           <table>
             <thead>
               <tr>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th>E-mail</th>
-                <th>Endereço</th>
-                <th>Ações</th>
+                <th>Nome</th><th>Telefone</th><th>E-mail</th><th>Endereço</th><th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -84,7 +80,7 @@ export default function Clientes() {
                 </tr>
               ))}
               {filtrados.length === 0 && (
-                <tr><td colSpan={5}><div className="empty-state"><div className="empty-state-icon">◉</div><p>Nenhum cliente encontrado</p></div></td></tr>
+                <tr><td colSpan={5}><div className="empty-state"><p>Nenhum cliente encontrado</p></div></td></tr>
               )}
             </tbody>
           </table>
@@ -92,8 +88,8 @@ export default function Clientes() {
       )}
 
       {modal && (
-        <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModal(false)} role="dialog" aria-modal="true" aria-labelledby="modal-title-cliente">
-          <div className="modal">
+        <div className="modal-overlay">
+          <dialog open className="modal" aria-labelledby="modal-title-cliente">
             <div className="modal-header">
               <h2 className="modal-title" id="modal-title-cliente">{editando ? 'Editar Cliente' : 'Novo Cliente'}</h2>
               <button className="modal-close" onClick={() => setModal(false)} aria-label="Fechar modal">×</button>
@@ -121,7 +117,7 @@ export default function Clientes() {
               <button className="btn btn-secondary" onClick={() => setModal(false)}>Cancelar</button>
               <button className="btn btn-primary" onClick={salvar}>Salvar</button>
             </div>
-          </div>
+          </dialog>
         </div>
       )}
     </div>

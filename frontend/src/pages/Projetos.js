@@ -79,12 +79,7 @@ export default function Projetos() {
           <table>
             <thead>
               <tr>
-                <th>Nome do Projeto</th>
-                <th>Cliente</th>
-                <th>Status</th>
-                <th>Prazo</th>
-                <th>Valor</th>
-                <th>Ações</th>
+                <th>Nome do Projeto</th><th>Cliente</th><th>Status</th><th>Prazo</th><th>Valor</th><th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -106,7 +101,7 @@ export default function Projetos() {
                 </tr>
               ))}
               {projetos.length === 0 && (
-                <tr><td colSpan={6}><div className="empty-state"><div className="empty-state-icon">◧</div><p>Nenhum projeto encontrado</p></div></td></tr>
+                <tr><td colSpan={6}><div className="empty-state"><p>Nenhum projeto encontrado</p></div></td></tr>
               )}
             </tbody>
           </table>
@@ -114,8 +109,8 @@ export default function Projetos() {
       )}
 
       {modal && (
-        <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModal(false)} role="dialog" aria-modal="true" aria-labelledby="modal-title-projeto">
-          <div className="modal">
+        <div className="modal-overlay">
+          <dialog open className="modal" aria-labelledby="modal-title-projeto">
             <div className="modal-header">
               <h2 className="modal-title" id="modal-title-projeto">{editando ? 'Editar Projeto' : 'Novo Projeto'}</h2>
               <button className="modal-close" onClick={() => setModal(false)} aria-label="Fechar modal">×</button>
@@ -156,7 +151,7 @@ export default function Projetos() {
               <button className="btn btn-secondary" onClick={() => setModal(false)}>Cancelar</button>
               <button className="btn btn-primary" onClick={salvar}>Salvar</button>
             </div>
-          </div>
+          </dialog>
         </div>
       )}
     </div>

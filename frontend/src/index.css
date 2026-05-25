@@ -67,7 +67,7 @@ body {
 
 .sidebar-logo span {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.9);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: block;
@@ -84,7 +84,7 @@ body {
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.9);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -129,7 +129,7 @@ body {
   padding: 8px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.95);
   border-radius: var(--radius);
   font-family: var(--font-body);
   font-size: 0.85rem;
@@ -321,10 +321,10 @@ tbody td {
   letter-spacing: 0.05em;
 }
 
-.badge-orcamento { background: #E8F0FB; color: #3A6B9E; }
-.badge-em_producao { background: #FEF3C7; color: #92700A; }
-.badge-concluido { background: #D1FAE5; color: #2D6A45; }
-.badge-entregue { background: #F0E8DC; color: #6B4C2A; }
+.badge-orcamento { background: #E8F0FB; color: #1E4A7A; }
+.badge-em_producao { background: #FEF3C7; color: #6B4F00; }
+.badge-concluido { background: #D1FAE5; color: #1A4D2E; }
+.badge-entregue { background: #F0E8DC; color: #4A2F10; }
 
 /* Forms */
 .form-group {
@@ -460,10 +460,10 @@ textarea { resize: vertical; min-height: 80px; }
   letter-spacing: 0.08em;
 }
 
-.kanban-col-header.orcamento { background: #E8F0FB; color: #3A6B9E; }
-.kanban-col-header.em_producao { background: #FEF3C7; color: #92700A; }
-.kanban-col-header.concluido { background: #D1FAE5; color: #2D6A45; }
-.kanban-col-header.entregue { background: #F0E8DC; color: #6B4C2A; }
+.kanban-col-header.orcamento { background: #E8F0FB; color: #1E4A7A; }
+.kanban-col-header.em_producao { background: #FEF3C7; color: #6B4F00; }
+.kanban-col-header.concluido { background: #D1FAE5; color: #1A4D2E; }
+.kanban-col-header.entregue { background: #F0E8DC; color: #4A2F10; }
 
 .kanban-cards { padding: 12px; display: flex; flex-direction: column; gap: 10px; min-height: 200px; }
 

@@ -31,11 +31,11 @@ jobs:
 
       - name: Instalar dependências do Backend
         working-directory: ./backend
-        run: npm install
+        run: npm install --ignore-scripts
 
       - name: Instalar dependências do Frontend
         working-directory: ./frontend
-        run: npm install
+        run: npm install --ignore-scripts
 
       - name: Build do Frontend
         working-directory: ./frontend
